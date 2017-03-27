@@ -1,0 +1,91 @@
+<ExDomusDevices>
+  <CameraManufacturers>
+    <CameraManufacturer id="1" name="Vivotek">
+      <CameraModels>
+        <CameraModel id="1" name="My_IP8161" >
+    </CameraModel>
+      </CameraModels>
+    </CameraManufacturer>
+  </CameraManufacturers>
+
+  <CameraModels>
+    <CameraModel id="1">
+      <CameraTemplate>1</CameraTemplate>
+      <ResolutionFPS Template="1">1280x960</ResolutionFPS>
+      <PresetNumber>5</PresetNumber>
+    </CameraModel>
+  </CameraModels>
+
+  <CameraTemplates>
+    <CameraTemplate id="1" StreamTemplate="1">
+      <StillImageUrl>http://{ADDRESS}:{PORT}/{URLVALUE}</StillImageUrl>
+      <VideoUrl>DomoveaSourceFilter://{ADDRESS}?ip={ADDRESS}&amp;port={PORT}&amp;URL={URLVALUE}&amp;MediaType={STREAM_TYPE}</VideoUrl>
+      <PanTilt Url="http://{ADDRESS}:{PORT}/cgi-bin/camctrl/eCamCtrl.cgi?move={URLVALUE}">
+        <Up>up</Up>
+        <Down>down</Down>
+        <Left>left</Left>
+        <Right>right</Right>
+      </PanTilt>
+	  <Zoom Url="http://{ADDRESS}:{PORT}/cgi-bin/camctrl/eCamCtrl.cgi?zoom={URLVALUE}">
+        <ZoomIn>tele</ZoomIn>
+        <ZoomOut>wide</ZoomOut>
+      </Zoom>
+    </CameraTemplate>
+  </CameraTemplates>  
+
+
+  <StreamTemplates>
+    <StreamTemplate id="1">
+      <StreamList>
+        <Stream type="stilljpeg" DefaultCapture="true">cgi-bin/viewer/video.jpg</Stream>
+        <Stream type="motionjpeg" DefaultVideo="true">video.mjpg</Stream>		
+      </StreamList>
+    </StreamTemplate>
+  </StreamTemplates>
+
+  <ResolutionFPSTemplates>
+    <ResolutionFPSTemplate id="1">
+      <ResolutionFPSList>
+        <ImageResolutionFramerate Level="High">
+          <Resolution Width="1280" Height="960">1280x960</Resolution>
+          <Framerate Template="1">15</Framerate>
+        </ImageResolutionFramerate>
+		<ImageResolutionFramerate Level="High">
+          <Resolution Width="1600" Height="1200">1600x1280</Resolution>
+          <Framerate Template="1">15</Framerate>
+        </ImageResolutionFramerate>
+      </ResolutionFPSList>
+    </ResolutionFPSTemplate>
+  </ResolutionFPSTemplates>
+
+    <ImageCompressionTemplates>
+        <ImageCompressionTemplate id="1">
+            <CompressionList>
+            <Compression Level="Low">0</Compression>
+            </CompressionList>
+        </ImageCompressionTemplate>
+    </ImageCompressionTemplates>
+    
+  <ImageRotationTemplates>
+    <ImageRotationTemplate id="1">
+      <RotationList>
+        <Rotation Name="0">0</Rotation>
+      </RotationList>
+     </ImageRotationTemplate>
+  </ImageRotationTemplates>
+    
+  <FPSTemplates>
+    <FPSTemplate id="1">
+      <FramerateList>
+        <FPS FrameRate="25" Level="High">25</FPS>
+        <FPS FrameRate="20" Level="Custom">20</FPS>
+        <FPS FrameRate="15" Level="Custom">15</FPS>
+        <FPS FrameRate="10" Level="Medium">10</FPS>
+        <FPS FrameRate="5" Level="Custom">5</FPS>
+        <FPS FrameRate="2" Level="Low">2</FPS>
+        <FPS FrameRate="1" Level="Custom">1</FPS>
+      </FramerateList>
+    </FPSTemplate>
+  </FPSTemplates>
+
+</ExDomusDevices>
