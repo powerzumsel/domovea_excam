@@ -1,0 +1,104 @@
+<ExDomusDevices>
+  <CameraManufacturers>
+    <CameraManufacturer id="1" name="MySony">
+      <CameraModels>
+        <CameraModel id="1" name="MySNCRZ25P_NEU" >
+    </CameraModel>
+      </CameraModels>
+    </CameraManufacturer>
+  </CameraManufacturers>
+
+  <CameraModels>
+    <CameraModel id="1">
+      <CameraTemplate>1</CameraTemplate>
+      <ResolutionFPS Template="1">640x480</ResolutionFPS>
+	  <PresetNumber>5</PresetNumber>
+    </CameraModel>
+  </CameraModels>
+
+  <CameraTemplates>
+    <CameraTemplate id="1" StreamTemplate="1">
+      <StillImageUrl>http://{ADDRESS}:{PORT}/{URLVALUE}</StillImageUrl>
+      <VideoUrl>DomoveaSourceFilter://{ADDRESS}?ip={ADDRESS}&amp;port={PORT}&amp;auth={AUTHENTICATION}&amp;login={LOGIN}&amp;password={PASSWORD}&amp;URL={URLVALUE}&amp;resodefwidth={RESOLUTION_WIDTH}&amp;resodefheight={RESOLUTION_HEIGHT}&amp;FPS={FRAMERATE_VALUE}&amp;MediaType={STREAM_TYPE}</VideoUrl>
+      <FramerateUrlParam>speed={URLVALUE}</FramerateUrlParam>
+      <PanTilt Url="http://{ADDRESS}:{PORT}/command/ptzf.cgi?relative={URLVALUE}">
+        <Up>0803</Up>
+        <Down>0203</Down>
+        <Left>0403</Left>
+        <Right>0603</Right>
+      </PanTilt>
+      <Zoom Url="http://{ADDRESS}:{PORT}/command/ptzf.cgi?relative={URLVALUE}">
+        <ZoomIn>1105</ZoomIn>
+        <ZoomOut>1005</ZoomOut>
+      </Zoom>  	
+	<GotoPresetUrl>http://{ADDRESS}:{PORT}/command/ptzf.cgi?AbsolutePTZF={PANPOSITION},{TILTPOSITION},{ZOOMPOSITION}</GotoPresetUrl>
+      <QueryPTZInfo Type="AbsolutePTZ">
+        <Url>http://{ADDRESS}:{PORT}/command/inquiry.cgi?inq=ptzf</Url>
+        <QueryParsingRegex>AbsolutePTZF=([0-9a-fA-F]+),([0-9a-fA-F]+),([0-9a-fA-F]+)</QueryParsingRegex>
+        <ChannelPos>0</ChannelPos>
+        <PanPos>1</PanPos>
+        <TiltPos>2</TiltPos>
+        <ZoomPos>3</ZoomPos>
+      </QueryPTZInfo>	  
+    </CameraTemplate>
+  </CameraTemplates>
+
+  <StreamTemplates>
+    <StreamTemplate id="1">
+      <StreamList>
+        <Stream type="stilljpeg" DefaultCapture="true">oneshotimage.jpg</Stream>
+        <Stream type="motionjpeg" DefaultVideo="true">image?{FRAMERATE}</Stream>
+      </StreamList>
+    </StreamTemplate>
+  </StreamTemplates>
+
+  <ResolutionFPSTemplates>
+    <ResolutionFPSTemplate id="1">
+      <ResolutionFPSList>        
+        <ImageResolutionFramerate Level="High">
+          <Resolution Width="640" Height="480">640x480</Resolution>
+          <Framerate Template="1">25</Framerate>
+        </ImageResolutionFramerate>
+        <ImageResolutionFramerate Level="Medium">
+          <Resolution Width="320" Height="240">320x240</Resolution>
+          <Framerate Template="1">25</Framerate>
+        </ImageResolutionFramerate>
+        <ImageResolutionFramerate Level="Low">
+          <Resolution Width="160" Height="120">160x120</Resolution>
+          <Framerate Template="1">25</Framerate>
+        </ImageResolutionFramerate>
+      </ResolutionFPSList>
+    </ResolutionFPSTemplate>
+  </ResolutionFPSTemplates>
+
+    <ImageCompressionTemplates>
+        <ImageCompressionTemplate id="1">
+            <CompressionList>
+            <Compression Level="Low">0</Compression>
+            </CompressionList>
+        </ImageCompressionTemplate>
+    </ImageCompressionTemplates>
+    
+  <ImageRotationTemplates>
+    <ImageRotationTemplate id="1">
+      <RotationList>
+        <Rotation Name="0">0</Rotation>
+      </RotationList>
+     </ImageRotationTemplate>
+  </ImageRotationTemplates>
+    
+  <FPSTemplates>
+    <FPSTemplate id="1">
+      <FramerateList>
+        <FPS FrameRate="25" Level="High">25</FPS>
+        <FPS FrameRate="20" Level="Custom">20</FPS>
+        <FPS FrameRate="15" Level="Custom">15</FPS>
+        <FPS FrameRate="10" Level="Medium">10</FPS>
+        <FPS FrameRate="5" Level="Custom">5</FPS>
+        <FPS FrameRate="2" Level="Low">2</FPS>
+        <FPS FrameRate="1" Level="Custom">1</FPS>
+      </FramerateList>
+    </FPSTemplate>
+  </FPSTemplates>
+
+</ExDomusDevices>
